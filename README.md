@@ -1,38 +1,70 @@
-# Welcome to Remix!
+# Remix Contacts App
 
-- [Remix Docs](https://remix.run/docs)
+Este proyecto es una aplicación web de gestión de contactos utilizando **Remix** y **React**. Permite agregar, editar, eliminar y marcar contactos como favoritos. La aplicación sigue un patrón de diseño simple y funcional.
 
-## Development
+## Índice
 
-From your terminal:
+- [Instalación](#instalación)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Funcionalidades](#funcionalidades)
+- [Rutas Principales](#rutas-principales)
+- [Dependencias](#dependencias)
+- [Contribuciones](#contribuciones)
 
-```sh
-npm run dev
-```
+## Instalación
 
-This starts your app in development mode, rebuilding assets on file changes.
+1. Clona el repositorio en tu máquina local:
 
-## Deployment
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
 
-First, build your app for production:
+2. Navega al directorio del proyecto:
 
-```sh
-npm run build
-```
+   ```bash
+   cd remix-contacts
 
-Then run the app in production mode:
+3. Instala las dependencias del proyecto:
 
-```sh
-npm start
-```
+   ```bash
+   npm install
 
-Now you'll need to pick a host to deploy it to.
+4. Inicia el servidor de desarrollo:
 
-### DIY
+   ```bash
+   npm run dev
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+5. Abre el navegador y accede a http://localhost:3000 para ver la aplicación en funcionamiento.
 
-Make sure to deploy the output of `remix build`
+## Estructura del Proyecto
 
-- `build/server`
-- `build/client`
+- **`app/`**: Contiene los archivos principales de la aplicación.
+- **`components/`**: Componentes reutilizables como el formulario de edición de contactos y el botón de favoritos.
+- **`data.ts`**: Contiene las funciones de simulación de la base de datos para crear, obtener y actualizar contactos.
+- **`routes/`**: Define las rutas de la aplicación, incluyendo la vista de contactos, la vista de edición y la ruta principal.
+
+## Funcionalidades
+
+- **Ver Contactos**: Muestra la lista de contactos con la opción de ver más detalles de cada uno.
+- **Agregar Contacto**: Permite crear un nuevo contacto desde la vista principal.
+- **Editar Contacto**: Permite editar los detalles de un contacto específico, como el nombre, la cuenta de Twitter y las notas.
+- **Eliminar Contacto**: Permite eliminar un contacto después de una confirmación. (Aún en desarrollo)
+- **Marcar como Favorito**: Permite marcar o desmarcar un contacto como favorito. (Aún en desarrollo)
+
+## Rutas Principales
+
+- **`/`**: Página principal con la lista de contactos.
+- **`/contacts/:contactId`**: Vista de detalle de un contacto.
+- **`/contacts/:contactId/edit`**: Vista para editar un contacto.
+
+## Dependencias
+
+- **`@remix-run/react`**: Framework para React que facilita el manejo de rutas y renderizado del lado del servidor.
+- **`react`**: Librería de interfaz de usuario.
+- **`tiny-invariant`**: Paquete para verificar la existencia de parámetros en las rutas.
+- **`@remix-run/node`**: Herramientas de backend para Remix.
+- **`react-router-dom`**: Manejo de rutas en la aplicación.
+
+
+
+
+
