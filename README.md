@@ -4,12 +4,22 @@ Este proyecto es una aplicación web de gestión de contactos utilizando **Remix
 
 ## Índice
 
-- [Instalación](#instalación)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Funcionalidades](#funcionalidades)
-- [Rutas Principales](#rutas-principales)
-- [Dependencias](#dependencias)
-- [Contribuciones](#contribuciones)
+1. [Instalación](#instalación)
+2. [Estructura del Proyecto](#estructura-del-proyecto)
+3. [Funcionalidades](#funcionalidades)
+4. [Rutas Principales](#rutas-principales)
+5. [Archivo `contacts.$contactId:edit.tsx`](#archivo-contactscontactidedittsx)
+   - [Acción (Edit)](#acción-edit)
+   - [Cargador (Loader)](#cargador-loader)
+   - [Formulario de Edición](#formulario-de-edición)
+6. [Archivo `contacts.$contactId.tsx`](#archivo-contactscontactidtsx)
+   - [Cargador (Loader)](#cargador-loader-1)
+   - [Vista del Contacto](#vista-del-contacto)
+   - [Botones de Editar y Eliminar](#botones-de-editar-y-eliminar)
+7. [Componente `Favorite`](#componente-favorite)
+8. [Resumen General](#resumen-general)
+9. [Dependencias](#dependencias)
+10. [Contribuciones](#contribuciones)
 
 ## Instalación
 
@@ -55,6 +65,61 @@ Este proyecto es una aplicación web de gestión de contactos utilizando **Remix
 - **`/`**: Página principal con la lista de contactos.
 - **`/contacts/:contactId`**: Vista de detalle de un contacto.
 - **`/contacts/:contactId/edit`**: Vista para editar un contacto.
+
+---
+
+## Archivo `contacts.$contactId:edit.tsx`
+
+### Acción (Edit)
+Este archivo contiene la lógica para editar un contacto. Tiene dos secciones principales: la acción y el cargador.
+
+- **`action`**: Aquí se obtiene el ID del contacto desde la URL (`params.contactId`) y luego se toma la información del formulario enviado (`formData`). Con esta información, se actualizan los detalles del contacto utilizando la función `updateContact`. Después de actualizar, se redirige al usuario a la página de detalles del contacto (`/contacts/:contactId`).
+
+### Cargador (Loader)
+- **`loader`**: Obtiene el contacto a editar usando el ID que llega como parámetro en la URL. Si no se encuentra el contacto, se devuelve un error 404. De lo contrario, devuelve los detalles del contacto para que se puedan mostrar en el formulario.
+
+### Formulario de Edición
+- **Formulario (`<Form>` en JSX)**: Es el formulario donde el usuario puede editar los detalles del contacto, como el nombre, cuenta de Twitter, avatar y notas. Los valores predeterminados del formulario están llenados con los datos actuales del contacto.
+
+---
+
+## Archivo `contacts.$contactId.tsx`
+
+Este archivo se encarga de mostrar la vista de un contacto específico.
+
+### Cargador (Loader)
+- **`loader`**: Al igual que en el archivo anterior, el cargador obtiene el contacto utilizando el ID pasado como parámetro en la URL. Si no se encuentra el contacto, se devuelve un error 404. Si el contacto existe, se pasan los datos a la vista.
+
+### Vista del Contacto
+- **Vista (`<div id="contact">`)**: Esta es la página donde se muestra el detalle del contacto, incluyendo su avatar, nombre, cuenta de Twitter y notas. Si el contacto tiene un avatar, se muestra la imagen. También se muestra el nombre del contacto, si está disponible.
+
+- **Botón de Favorito**: Un pequeño componente de React, **`Favorite`**, que permite marcar o desmarcar al contacto como favorito. Cuando el usuario hace clic en el botón, se actualiza el estado del favorito y se muestra un icono de estrella llena o vacía dependiendo de si el contacto es favorito o no.
+
+- **Botones de Editar y Eliminar**:
+- **Editar**: Un botón que redirige a la página de edición del contacto.
+- **Eliminar**: Un botón que permite eliminar un contacto. El usuario tiene que confirmar antes de eliminar un contacto, de lo contrario la acción se cancela.
+
+---
+
+## Componente `Favorite`
+
+Este es un componente pequeño pero importante que se utiliza para manejar la funcionalidad de marcar o desmarcar un contacto como favorito.
+
+- **Estado de Favorito**: Este componente recibe un objeto `contact` y determina si el contacto es favorito o no (usando la propiedad `favorite`). Si es favorito, se muestra una estrella llena (★); si no lo es, se muestra una estrella vacía (☆).
+- **Acción en el Botón**: Cuando el usuario hace clic en el botón de favorito, se cambia el estado de la propiedad `favorite` del contacto.
+
+
+---
+
+## RESUMEN
+
+- El archivo **`contacts.$contactId:edit.tsx`** se encarga de permitir la edición de los contactos. Ofrece un formulario para cambiar los detalles del contacto y los guarda en la base de datos.
+- El archivo **`contacts.$contactId.tsx`** es la página de detalles de un contacto, donde puedes ver la información del contacto, editarla o eliminarla. También tiene un botón para marcar el contacto como favorito.
+- El **componente `Favorite`** es responsable de manejar el estado de favorito de un contacto, permitiendo que el usuario lo marque o desmarque.
+
+En general, el flujo de la aplicación se basa en cargar la información del contacto desde una "base de datos", mostrarla en una página de detalles y permitir la edición o eliminación a través de formularios. También se incluye la funcionalidad para marcar los contactos como favoritos.
+
+---
 
 ## Dependencias
 
