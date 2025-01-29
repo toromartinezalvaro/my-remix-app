@@ -8,18 +8,19 @@ Este proyecto es una aplicación web de gestión de contactos utilizando **Remix
 2. [Estructura del Proyecto](#estructura-del-proyecto)
 3. [Funcionalidades](#funcionalidades)
 4. [Rutas Principales](#rutas-principales)
-5. [Archivo `contacts.$contactId:edit.tsx`](#archivo-contactscontactidedittsx)
+5. [Explicación de Remix](#explicacion-de-remix)
+6. [Archivo `contacts.$contactId:edit.tsx`](#archivo-contactscontactidedittsx)
    - [Acción (Edit)](#acción-edit)
    - [Cargador (Loader)](#cargador-loader)
    - [Formulario de Edición](#formulario-de-edición)
-6. [Archivo `contacts.$contactId.tsx`](#archivo-contactscontactidtsx)
+7. [Archivo `contacts.$contactId.tsx`](#archivo-contactscontactidtsx)
    - [Cargador (Loader)](#cargador-loader-1)
    - [Vista del Contacto](#vista-del-contacto)
    - [Botones de Editar y Eliminar](#botones-de-editar-y-eliminar)
-7. [Componente `Favorite`](#componente-favorite)
-8. [Resumen General](#resumen-general)
-9. [Dependencias](#dependencias)
-10. [Contribuciones](#contribuciones)
+8. [Componente `Favorite`](#componente-favorite)
+9. [Resumen General](#resumen-general)
+10. [Dependencias](#dependencias)
+11. [Contribuciones](#contribuciones)
 
 ## Instalación
 
@@ -65,6 +66,19 @@ Este proyecto es una aplicación web de gestión de contactos utilizando **Remix
 - **`/`**: Página principal con la lista de contactos.
 - **`/contacts/:contactId`**: Vista de detalle de un contacto.
 - **`/contacts/:contactId/edit`**: Vista para editar un contacto.
+
+---
+
+## Explicación de Remix
+
+En Remix, hay dos formas principales de manejar los datos en la aplicación: los **loaders** y las **actions**.
+
+- **Los loaders** se usan para obtener información antes de que la página cargue. Son útiles para traer datos desde una base de datos o una API antes de mostrar la vista.
+- **Las actions** se usan cuando se necesita modificar información, como al enviar un formulario o actualizar un registro en la base de datos.
+
+Para acceder a los datos de un **loader**, se usa el hook `useLoaderData`, que permite traer la información y usarla en la interfaz. Ademas, se pueden obtener los resultados de una **action**, como mensajes de error después de enviar un formulario, usando `useActionData`.
+
+También existe `invariant`, que sirve para asegurarse de que ciertos datos existen antes de continuar con un proceso. Si la condición no se cumple, se lanza un error, esto se usa para evitar fallos en la aplicacion.
 
 ---
 
